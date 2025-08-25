@@ -13,7 +13,7 @@ export default function Page() {
     }, [])
 
     return (
-        <div className='w-full h-screen flex justify-center items-center'>
+        <div className='w-full h-[100vh] flex justify-center items-center'>
             <Pointer />
             <MorphingText texts={["", "Are", "You", "Ready?"]} callback={handleShow} />
         </div >

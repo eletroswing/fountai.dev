@@ -21,7 +21,7 @@ const topVariants = {
 
 const bottomVariants = {
     initial: { y: "100%", x: "-100%" },
-    animate: { y: 0 , x: 0},
+    animate: { y: 0, x: 0 },
     exit: { y: "100%", x: "-100%" }
 }
 
@@ -30,22 +30,22 @@ const COURTINE_DELAY = 0.4
 function TransitionOverlay({ onMidpoint }: { onMidpoint?: () => void }) {
 
     const TextComponent = () => (<>
-        <SparklesText className='text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl' sparklesCount={3}> 
+        <SparklesText className='text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl' sparklesCount={3}>
             Fountai
             <AuroraText>.dev</AuroraText>
-            </SparklesText>
+        </SparklesText>
     </>)
 
-return (
+    return (
         <motion.div
             initial="initial"
             animate="animate"
             exit="exit"
-            className="fixed inset-0 z-50 pointer-events-none"
+            className="fixed inset-0 z-[100000] pointer-events-none"
             onAnimationComplete={(definition) => {
                 if (definition === "animate" && onMidpoint) {
                     onMidpoint()
-                }
+                }   
             }}
         >
             <div className="absolute inset-0 flex flex-col">
@@ -84,7 +84,7 @@ return (
 function PageWrapper({ children }: { children: React.ReactNode }) {
     return (
         <motion.div
-            className="w-full h-full"
+            className="w-full h-full z-[100000]"
         >
             {children}
         </motion.div>

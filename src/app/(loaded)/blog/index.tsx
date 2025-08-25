@@ -1,7 +1,13 @@
+import { useEffect } from 'react';
 import './../../../App.css'
 import { File, Folder, Tree } from "@/components/magicui/file-tree";
 
 export default function Page() {
+
+  useEffect(() => {
+    console.log("hello")
+  }, [])
+
   return (
     <div className="w-full h-full flex flex-col">
       <div className='h-full flex py-4 px-4 w-1/6'>

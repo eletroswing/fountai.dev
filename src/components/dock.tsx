@@ -14,6 +14,8 @@ import {
 import { cn } from "@/lib/utils";
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { useLocation, useNavigate } from "react-router";
+import { Pointer } from '@/components/magicui/pointer';
+import type { DockProps } from '@/components/magicui/dock';
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -80,7 +82,7 @@ const DATA = {
             },
             X: {
                 name: "X",
-                url: "https://x.com/ytu/",
+                url: "https://x.com/fountai_dev/",
                 icon: Icons.x,
             },
             email: {
@@ -92,7 +94,7 @@ const DATA = {
     },
 };
 
-export function DockComponent() {
+export function DockComponent(props?: Omit<DockProps, 'children'>) {
     const navigation = useNavigate()
     const location = useLocation()
 
@@ -104,8 +106,12 @@ export function DockComponent() {
 
     return (
         <div className="flex flex-col items-center justify-center z-[100]">
+            <Pointer className="opacity-0 md:opacity-100">
+                <div className="text-2xl opacity-0 md:opacity-100">👆</div>
+            </Pointer>
+
             <TooltipProvider>
-                <Dock direction="middle">
+                <Dock direction="middle" {...props} >
                     {DATA.navbar.map((item) => (
                         <DockIcon key={item.label} className="cursor-pointer">
                             <Tooltip>
@@ -115,7 +121,7 @@ export function DockComponent() {
                                         aria-label={item.label}
                                         className={cn(
                                             buttonVariants({ variant: "ghost", size: "icon" }),
-                                            "size-12 rounded-full",
+                                            "size-12 rounded-full cursor-none",
                                             location.pathname === item.href && "text-purple-300",
                                         )}
                                     >
