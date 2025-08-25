@@ -1,0 +1,42 @@
+name: Auto Build and Deploy
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/bun@v0.7.3
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build project
+        run: bun run build
+
+      - name: Prepare SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Deploy div folder to private repo
+        run: |
+          cd div
+          git init
+          git remote add origin git@github.com:eletroswing/portifolio_build.git
+          git add .
+          git commit -m "Auto deploy from workflow"
+          git branch -M main
+          git push -f origin main
