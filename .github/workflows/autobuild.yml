@@ -13,10 +13,8 @@ jobs:
       - name: Checkout source repo
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/bun@v2
-        with:
-          bun-version: latest
+      - name: 🧰 Instalar Bun
+        uses: oven-sh/setup-bun@v1
 
       - name: Install dependencies
         run: bun install
