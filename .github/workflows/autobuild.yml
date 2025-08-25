@@ -30,7 +30,7 @@ jobs:
           git config --global user.name "${{ secrets.GIT_USERNAME }}"
           git remote add origin https://x-access-token:${{ secrets.SSH_PRIVATE_KEY }}@github.com/eletroswing/portifolio_build.git
           git branch -M main
-          git pull origin main
           git add .
           git commit -m "Auto deploy from workflow"
+          git pull origin main
           git push -f origin main
