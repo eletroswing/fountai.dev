@@ -22,20 +22,13 @@ jobs:
       - name: Build project
         run: bun run build
 
-      - name: Prepare SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-
       - name: Deploy div folder to private repo
         run: |
           cd dist
           git init
           git config --global user.email "${{ secrets.GIT_EMAIL }}"
           git config --global user.name "${{ secrets.GIT_USERNAME }}"
-          git remote add origin git@github.com:eletroswing/portifolio_build.git
+          git remote add origin https://${{ secrets.GH_TOKEN }}@github.com/eletroswing/portifolio_build.git
           git add .
           git commit -m "Auto deploy from workflow"
           git branch -M main
