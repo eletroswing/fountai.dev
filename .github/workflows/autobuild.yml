@@ -32,5 +32,6 @@ jobs:
           git branch -M main
           git add .
           git commit -m "Auto deploy from workflow"
+          git config pull.rebase true
           git pull origin main
           git push -f origin main
