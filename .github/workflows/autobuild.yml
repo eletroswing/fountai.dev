@@ -28,7 +28,7 @@ jobs:
           git init
           git config --global user.email "${{ secrets.GIT_EMAIL }}"
           git config --global user.name "${{ secrets.GIT_USERNAME }}"
-          git remote add origin https://${{ secrets.SSH_PRIVATE_KEY }}@github.com/eletroswing/portifolio_build.git
+          git remote add origin https://x-access-token:${{ secrets.SSH_PRIVATE_KEY }}@github.com/eletroswing/portifolio_build.git
           git add .
           git commit -m "Auto deploy from workflow"
           git branch -M main
