@@ -6,7 +6,7 @@ import {
   motion,
   useMotionValue,
 } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type JSX } from "react";
 
 import type { HTMLMotionProps } from "framer-motion";
 

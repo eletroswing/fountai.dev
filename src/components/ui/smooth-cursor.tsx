@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, useSpring } from "motion/react";
-import { FC, JSX, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { JSX, FC } from "react";
 
 interface Position {
   x: number;
@@ -89,7 +90,7 @@ export function SmoothCursor({
     restDelta: 0.001,
   },
 }: SmoothCursorProps) {
-  const [isMoving, setIsMoving] = useState(false);
+  const [_isMoving, setIsMoving] = useState(false);
   const lastMousePos = useRef<Position>({ x: 0, y: 0 });
   const velocity = useRef<Position>({ x: 0, y: 0 });
   const lastUpdateTime = useRef(Date.now());

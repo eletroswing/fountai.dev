@@ -1,4 +1,4 @@
-import { CalendarIcon, HomeIcon, MailIcon, PencilIcon, Pointer } from "lucide-react";
+import { CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react";
 import React from "react";
 
 import { BorderBeam } from "@/components/magicui/border-beam";

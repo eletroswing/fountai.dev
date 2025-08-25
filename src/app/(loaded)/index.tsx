@@ -1,7 +1,6 @@
 import './../../App.css'
 import { Outlet } from 'react-router'
 
-import { Pointer } from "@/components/magicui/pointer";
 import { DockComponent } from '@/components/dock'
 import { ScrollProgress } from "@/components/magicui/scroll-progress";
 import { Particles } from "@/components/magicui/particles";
