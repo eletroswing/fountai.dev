@@ -60,7 +60,7 @@ export default function Page() {
 
     return (
         <div className='w-full h-[100vh] overflow-hidden relative'>
-            <Pointer className={`z-[5] ${isMouseEnter && 'hidden'} opacity-0 md:opacity-100`} />
+            <Pointer className={`z-[5] ${isMouseEnter && 'hidden'} `} />
             <div className='relative w-full transition-all duration-1000 ease-in-out'>
                 <div className='fixed top-0 left-0 w-full flex justify-center items-end pb-10'>
                     <ScrollProgress />

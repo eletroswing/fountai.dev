@@ -13,6 +13,8 @@ import { useEffect, useState } from 'react';
 import { SparklesText } from './components/magicui/sparkles-text';
 import { AuroraText } from './components/magicui/aurora-text';
 
+import NotFoundPage from '@/app/404'
+
 const topVariants = {
     initial: { y: "-100%", x: "100%" },
     animate: { y: 0, x: 0 },
@@ -118,6 +120,7 @@ export default function AppRoutes() {
 
             <AnimatePresence mode="wait">
                 <Routes location={displayLocation} key={displayLocation.pathname}>
+                    <Route path='404' element={<NotFoundPage />} />
                     <Route index element={<OpeningPage />} />
                     <Route path="home" element={<PageWrapper><LoadedLayout /></PageWrapper>}>
                         <Route index element={<PageWrapper><LandingPage /></PageWrapper>} />

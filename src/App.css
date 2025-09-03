@@ -91,6 +91,24 @@
     transform: rotate(var(--angle)) translateX(-500px);
     opacity: 0;
     }
+  }
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
   }}
 
 :root {
@@ -178,4 +196,35 @@
 
 * {
   cursor: none !important;
+}
+
+.playwrite-ca-400 {
+  font-family: "Playwrite CA", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  background-color: #ffffff15;
+  backdrop-filter: blur(20px);
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #ffffff20;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #ffffff20;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #ffffff30;
 }

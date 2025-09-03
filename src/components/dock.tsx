@@ -106,12 +106,12 @@ export function DockComponent(props?: Omit<DockProps, 'children'>) {
 
     return (
         <div className="flex flex-col items-center justify-center z-[100]">
-            <Pointer className="opacity-0 md:opacity-100">
-                <div className="text-2xl opacity-0 md:opacity-100">👆</div>
+            <Pointer className="">
+                <div className="text-2xl ">👆</div>
             </Pointer>
 
             <TooltipProvider>
-                <Dock direction="middle" {...props} >
+                <Dock direction="middle" {...props} className="dark:bg-transparent bg-black/5" >
                     {DATA.navbar.map((item) => (
                         <DockIcon key={item.label} className="cursor-pointer">
                             <Tooltip>
