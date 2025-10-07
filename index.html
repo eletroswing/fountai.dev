@@ -11,64 +11,14 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Playwrite+CA:wght@100..400&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Playwrite+CA:wght@100..400&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
   <script>
     const theme = localStorage.getItem('theme')
     if (theme === 'dark' || !theme) {
       document.documentElement.classList.add('dark')
     }
-
-    const titles = [
-      "fountai",
-      "criativo",
-      "dedicado",
-      "curioso",
-      "inovador",
-      "analítico",
-      "persistente",
-      "organizado",
-      "proativo",
-      "javascript",
-      "typescript",
-      "node.js",
-      "react",
-      "next.js",
-      "tailwind css",
-      "prisma",
-      "three.js",
-      "python",
-      "onnx",
-      "pytorch"
-    ]
-
-    var titleIndex = 0
-
-    const capitilizeFirstLetter = (str) => {
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    }
-
-    const changeTitle = () => {
-      if (titleIndex == 0) {
-        document.title = capitilizeFirstLetter(titles[0])
-        return
-      }
-
-      const new_title = capitilizeFirstLetter(titles[titleIndex])
-      document.title = new_title
-    }
-
-    setInterval(() => {
-      titleIndex = Math.floor(Math.random() * titles.length)
-      changeTitle()
-
-      setTimeout(() => {
-        if (titleIndex != 0) {
-          titleIndex = 0
-          changeTitle()
-          return
-        }
-      }, [1000])
-    }, 3000)
   </script>
 </head>
 

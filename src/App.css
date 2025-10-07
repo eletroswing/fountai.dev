@@ -194,10 +194,6 @@
     mix-blend-mode: normal;
 }
 
-* {
-  cursor: none !important;
-}
-
 .playwrite-ca-400 {
   font-family: "Playwrite CA", cursive;
   font-optical-sizing: auto;

@@ -4,14 +4,13 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, useLocation } from "react-router";
 import { AnimatePresence, motion } from "framer-motion"
 
-
 import LandingPage from '@/app/(loaded)/landing-page'
 import LoadedLayout from '@/app/(loaded)'
 import OpeningPage from '@/app/opening'
 import BlogPage from '@/app/(loaded)/blog'
 import { useEffect, useState } from 'react';
-import { SparklesText } from './components/magicui/sparkles-text';
-import { AuroraText } from './components/magicui/aurora-text';
+import { SparklesText } from '@/components/magicui/sparkles-text';
+import { AuroraText } from '@/components/magicui/aurora-text';
 
 import NotFoundPage from '@/app/404'
 
@@ -124,7 +123,9 @@ export default function AppRoutes() {
                     <Route index element={<OpeningPage />} />
                     <Route path="home" element={<PageWrapper><LoadedLayout /></PageWrapper>}>
                         <Route index element={<PageWrapper><LandingPage /></PageWrapper>} />
-                        <Route path="blog" element={<PageWrapper><BlogPage /></PageWrapper>} />
+                    </Route>
+                    <Route path="blog" element={<PageWrapper><LoadedLayout /></PageWrapper>}>
+                        <Route index element={<PageWrapper><BlogPage /></PageWrapper>} />
                     </Route>
                 </Routes>
             </AnimatePresence>

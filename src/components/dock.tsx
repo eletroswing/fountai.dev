@@ -14,7 +14,6 @@ import {
 import { cn } from "@/lib/utils";
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { useLocation, useNavigate } from "react-router";
-import { Pointer } from '@/components/magicui/pointer';
 import type { DockProps } from '@/components/magicui/dock';
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
@@ -66,7 +65,7 @@ const Icons = {
 const DATA = {
     navbar: [
         { href: "/home", icon: HomeIcon, label: "Home" },
-        { href: "/home/blog", icon: PencilIcon, label: "Blog" },
+        { href: "/blog", icon: PencilIcon, label: "Blog" },
     ],
     contact: {
         social: {
@@ -106,10 +105,6 @@ export function DockComponent(props?: Omit<DockProps, 'children'>) {
 
     return (
         <div className="flex flex-col items-center justify-center z-[100]">
-            <Pointer className="">
-                <div className="text-2xl ">👆</div>
-            </Pointer>
-
             <TooltipProvider>
                 <Dock direction="middle" {...props} className="dark:bg-transparent bg-black/5" >
                     {DATA.navbar.map((item) => (
@@ -117,16 +112,16 @@ export function DockComponent(props?: Omit<DockProps, 'children'>) {
                             <Tooltip>
                                 <TooltipTrigger asChild>
                                     <a
-                                        onClick={() => ensureNavigation(item.href)}
+                                        onClick={() => ensureNavigation(item.href) }
                                         aria-label={item.label}
                                         className={cn(
                                             buttonVariants({ variant: "ghost", size: "icon" }),
-                                            "size-12 rounded-full cursor-none",
+                                            "size-12 rounded-full",
                                             location.pathname === item.href && "text-purple-300",
                                         )}
                                     >
                                         <item.icon className="size-4" />
-                                    </a >
+                                    </a>
                                 </TooltipTrigger>
                                 <TooltipContent>
                                     <p>{item.label}</p>

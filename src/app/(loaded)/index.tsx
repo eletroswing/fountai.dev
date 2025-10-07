@@ -6,7 +6,6 @@ import { ScrollProgress } from "@/components/magicui/scroll-progress";
 import { Particles } from "@/components/magicui/particles";
 import { useMemo, useState } from 'react';
 import { Meteors } from '@/components/magicui/meteors';
-import { Pointer } from '@/components/magicui/pointer';
 
 const slugs = [
     "typescript",
@@ -59,8 +58,7 @@ export default function Page() {
     }
 
     return (
-        <div className='w-full h-[100vh] overflow-hidden relative'>
-            <Pointer className={`z-[5] ${isMouseEnter && 'hidden'} `} />
+        <div className='w-full h-[100dvh] overflow-hidden relative'>
             <div className='relative w-full transition-all duration-1000 ease-in-out'>
                 <div className='fixed top-0 left-0 w-full flex justify-center items-end pb-10'>
                     <ScrollProgress />
@@ -75,8 +73,8 @@ export default function Page() {
                         </div>
                     </div>
                 </div>
-                <div className='w-full h-[100vh] relative flex justify-center items-center'>
-                    <div className='w-full h-[100vh] absolute top-0 left-0'>
+                <div className='w-full h-[100dvh] relative flex justify-center items-center'>
+                    <div className='w-full h-[100dvh] absolute top-0 left-0'>
                         <Particles className='absolute top-0 left-0' />
                         <Particles className='absolute top-0 left-0 ' color='#000000' />
                         <Meteors number={10} images={darkModeIcons} className='block dark:hidden' />

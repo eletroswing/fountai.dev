@@ -1,65 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import './../../../App.css'
-import { File, Folder, Tree } from "@/components/magicui/file-tree";
-import { AppSidebar } from '@/components/sidebar';
-import {
-  AnimatedSpan,
-  Terminal,
-  TypingAnimation,
-} from "@/components/magicui/terminal";
-import { Highlighter } from '@/components/magicui/highlighter';
-import { MarqueeDemo } from '@/components/marquee';
 
+import './../../../App.css'
+import { useEffect,useRef, useState } from 'react';
+import { File, Folder } from "@/components/magicui/file-tree";
 interface FileTree {
   [key: string]: {
     path?: string,
     name?: string,
   } | FileTree;
-}
-
-function buildPathObject(parts: string[]) {
-  let root = {}, cur: FileTree = root;
-  parts.forEach((p, i) => {
-    cur[p] ??= { path: parts.slice(0, i + 1).join("/") };
-    if (i === parts.length - 1) cur[p].name = p;
-    cur = cur[p] as unknown as FileTree;
-  });
-  return root;
-}
-function deepMerge(target: any, source: any) {
-  for (const key of Object.keys(source)) {
-    if (
-      source[key] instanceof Object &&
-      key in target
-    ) {
-      Object.assign(source[key], deepMerge(target[key], source[key]));
-    }
-  }
-  return { ...target, ...source };
-}
-
-function renderNode(node: FileTree, valueCounter: { current: number }) {
-  return Object.entries(node).map(([key, child]) => {
-    if (key === "path" || key === "name") return null;
-
-    const isFile = !!child.name;
-    const value = String(++valueCounter.current);
-    const styles = "text-md"
-
-    if (isFile) {
-      return (
-        <File key={value} value={value} className={styles}>
-          <p>{(child as { name: string }).name}</p>
-        </File>
-      );
-    } else {
-      return (
-        <Folder key={value} value={value} element={key} className={styles}>
-          {renderNode(child as FileTree, valueCounter)}
-        </Folder>
-      );
-    }
-  });
 }
 
 export default function Page() {
@@ -120,26 +67,10 @@ export default function Page() {
   }, [])
 
   return (
-    <div className="w-full h-full flex ">
-      <div className='h-full pt md:w-60 w-0 flex absolute'>
-        <AppSidebar>
-          <Tree
-            className="overflow-hidden pt-10 pl-5"
-            initialExpandedItems={Array.from({ length: 1000 }, (_, i) => String(i))}
-          >
-            {
-              !loading && renderNode(posts as unknown as FileTree, valueCounter)
-            }
-          </Tree>
-        </AppSidebar>
+    <div className="w-full h-full flex justify-center overflow-auto mt-10">
+      <div className='gap-4 grid grid-cols-4 content-start'>
       </div>
-      <div className='w-full z-[2] h-full  overflow-x-auto flex flex-col items-center pb-28'>
-        <span className='font-mono text-[0.7rem] text-center mt-4 text-black dark:text-white italic'>
-          "Just that my talent is in my veins" - Fabio Brazza
-        </span>
-        <div className='w-full h-[20vh] flex flex-col items-center justify-center mt-20'>
-        </div>
-      </div>
+     
     </div >
   )
 }

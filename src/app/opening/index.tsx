@@ -2,7 +2,6 @@ import './../../App.css'
 
 import { useNavigate } from "react-router";
 import { useCallback } from 'react';
-import { Pointer } from "@/components/magicui/pointer";
 import { MorphingText } from "@/components/magicui/morphing-text";
 
 export default function Page() {
@@ -13,9 +12,8 @@ export default function Page() {
     }, [])
 
     return (
-        <div className='w-full h-[100vh] flex justify-center items-center'>
-            <Pointer />
+        <div className='w-full h-[100dvh] flex justify-center items-center relative'>
             <MorphingText texts={["", "Are", "You", "Ready?"]} callback={handleShow} />
-        </div >
+        </div>
     )
 }
